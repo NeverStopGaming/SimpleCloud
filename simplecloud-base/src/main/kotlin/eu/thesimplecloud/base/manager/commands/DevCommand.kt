@@ -6,12 +6,11 @@ import eu.thesimplecloud.launcher.console.command.annotations.Command
 import eu.thesimplecloud.launcher.console.command.annotations.CommandSubPath
 import eu.thesimplecloud.launcher.startup.Launcher
 
-@Command("clear", CommandType.CONSOLE, "cloud.command.clear")
-class ClearConsoleCommand {
+@Command("dev", CommandType.CONSOLE_AND_INGAME, "cloud.command.dev")
+class DevCommand {
 
-    @CommandSubPath("","Clear the Console")
+    @CommandSubPath("","The Dev Command")
     fun handleList(commandSender: ICommandSender) {
-        Launcher.instance.clearConsole()
+        commandSender.sendMessage("Test")
     }
 }
-
