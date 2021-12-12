@@ -59,6 +59,7 @@ class ServiceDirectory(private val cloudService: ICloudService) {
     private fun copyTemplateFiles() {
         val template = cloudService.getTemplate()
         val everyDir = File(DirectoryPaths.paths.templatesPath + "EVERY")
+        val versionDir = File(DirectoryPaths.paths.templatesPath + "EVERY_VERSION_" + cloudService.getServiceVersion().name)
         val everyTypeDir = if (cloudService.getServiceType() == ServiceType.PROXY)
             File(DirectoryPaths.paths.templatesPath + "EVERY_PROXY")
         else
@@ -72,6 +73,8 @@ class ServiceDirectory(private val cloudService: ICloudService) {
             if (everyTypeDir.exists())
                 FileUtils.copyDirectory(everyTypeDir, this.serviceTmpDirectory)
             templateDirectories.filter { it.exists() }.forEach { FileUtils.copyDirectory(it, this.serviceTmpDirectory) }
+            if(versionDir.exists())
+                FileUtils.copyDirectory(versionDir, this.serviceTmpDirectory)
         }
 
         if (cloudService.getServiceType() == ServiceType.PROXY) {
