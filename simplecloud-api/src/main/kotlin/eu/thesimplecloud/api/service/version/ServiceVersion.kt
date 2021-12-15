@@ -34,6 +34,6 @@ data class ServiceVersion(
         val name: String,
         val serviceAPIType: ServiceAPIType,
         val downloadURL: String,
-        val javaCommand: String,
+        val javaCommand: String = "java",
         val isPaperClip: Boolean = false
 )
