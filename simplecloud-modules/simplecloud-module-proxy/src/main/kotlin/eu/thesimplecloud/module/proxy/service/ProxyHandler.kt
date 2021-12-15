@@ -20,8 +20,6 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-@file:Suppress("UnstableApiUsage")
-
 package eu.thesimplecloud.module.proxy.service
 
 import eu.thesimplecloud.api.CloudAPI
@@ -36,6 +34,7 @@ import eu.thesimplecloud.module.proxy.config.ProxyGroupConfiguration
 import eu.thesimplecloud.module.proxy.config.TablistConfiguration
 import eu.thesimplecloud.module.proxy.extensions.mapToLowerCase
 import eu.thesimplecloud.plugin.startup.CloudPlugin
+import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
 import java.util.*
@@ -88,11 +87,8 @@ object ProxyHandler {
         return CloudPlugin.instance.thisService().getServiceGroup().getOnlinePlayerCount()
     }
 
-    fun getHexColorComponent(message: String): TextComponent {
-        return TextComponent.ofChildren(
-            MiniMessage.get()
-                .parse(message)
-        )
+    fun getHexColorComponent(message: String): Component {
+        return MiniMessage.get().parse(message).asComponent()
     }
 
     fun replaceString(message: String): String {
