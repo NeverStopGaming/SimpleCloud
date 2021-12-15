@@ -20,6 +20,8 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+@file:Suppress("UnstableApiUsage")
+
 package eu.thesimplecloud.module.proxy.service
 
 import eu.thesimplecloud.api.CloudAPI
@@ -36,7 +38,6 @@ import eu.thesimplecloud.module.proxy.extensions.mapToLowerCase
 import eu.thesimplecloud.plugin.startup.CloudPlugin
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.minimessage.MiniMessage
-import net.md_5.bungee.api.ChatColor
 import java.util.*
 
 /**
@@ -120,7 +121,7 @@ object ProxyHandler {
             .replace("%PRIORITY%", tablistInformation.priority.toString())
             .replace("%PREFIX%", tablistInformation.prefix)
             .replace("%SUFFIX%", tablistInformation.suffix)
-            .replace("%COLOR_CODE%", ChatColor.valueOf(tablistInformation.color).toString())
+            //.replace("%COLOR_CODE%", ChatColor.valueOf(tablistInformation.color).toString())
     }
 
     private fun getTablistInformation(uuid: UUID): TablistInformation? {
