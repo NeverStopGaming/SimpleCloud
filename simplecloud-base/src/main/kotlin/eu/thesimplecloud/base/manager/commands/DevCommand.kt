@@ -11,7 +11,7 @@ import eu.thesimplecloud.launcher.startup.Launcher
 @Command("dev", CommandType.CONSOLE_AND_INGAME, "cloud.command.dev")
 class DevCommand : ICommandHandler {
 
-    @CommandSubPath("ALL","Shutting down ALL servers")
+    @CommandSubPath("ALL","Shutting down ALL Servers")
     fun handleDevALL(commandSender: ICommandSender) {
 
         val Proxy = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Proxy")
@@ -26,10 +26,10 @@ class DevCommand : ICommandHandler {
         Chaoten!!.shutdownAllServices()
         SteinGaming!!.shutdownAllServices()
 
-        commandSender.sendMessage("All services have been shut down")
+        commandSender.sendMessage("All Services have been shut down")
     }
 
-    @CommandSubPath("API","Shuts down the Servers with the API Plugins")
+    @CommandSubPath("API","Shuts down all Servers with the API Plugins installd on it")
     fun handleDevAPI(commandSender: ICommandSender) {
 
         val Panda260 = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Panda260")
@@ -40,10 +40,10 @@ class DevCommand : ICommandHandler {
         Chaoten!!.shutdownAllServices()
         SteinGaming!!.shutdownAllServices()
 
-        commandSender.sendMessage("All services have been shut down")
+        commandSender.sendMessage("All Services have been shut down")
     }
 
-    @CommandSubPath("PROXY","Shutdown the Proxy")
+    @CommandSubPath("PROXY","Shutting down ALL Proxys")
     fun handleDev(commandSender: ICommandSender) {
 
         val Proxy = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Proxy")
@@ -52,6 +52,6 @@ class DevCommand : ICommandHandler {
         Proxy!!.shutdownAllServices()
         Proxy2!!.shutdownAllServices()
 
-        commandSender.sendMessage("All services have been shut down")
+        commandSender.sendMessage("All Services have been shut down")
     }
 }
