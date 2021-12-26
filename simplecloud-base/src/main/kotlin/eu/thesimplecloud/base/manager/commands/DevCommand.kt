@@ -32,10 +32,14 @@ class DevCommand : ICommandHandler {
     @CommandSubPath("API","Shuts down all Servers with the API Plugins installd on it")
     fun handleDevAPI(commandSender: ICommandSender) {
 
+        val Proxy = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Proxy")
+        val Proxy2 = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Proxy2")
         val Panda260 = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Panda260")
         val Chaoten = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("Chaoten")
         val SteinGaming = CloudAPI.instance.getCloudServiceGroupManager().getServiceGroupByName("SteinGaming")
 
+        Proxy!!.shutdownAllServices()
+        Proxy2!!.shutdownAllServices()
         Panda260!!.shutdownAllServices()
         Chaoten!!.shutdownAllServices()
         SteinGaming!!.shutdownAllServices()
