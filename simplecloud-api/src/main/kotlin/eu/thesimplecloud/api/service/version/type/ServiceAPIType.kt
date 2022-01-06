@@ -39,7 +39,7 @@ enum class ServiceAPIType(
     SPIGOT(MinecraftEdition.JAVA, ServiceVersionType.SERVER),
 
     /**
-     * Represents a jar with the spigot api
+     * Represents a jar with the MineStom
      */
     MINESTOM(MinecraftEdition.JAVA, ServiceVersionType.SERVER),
 
