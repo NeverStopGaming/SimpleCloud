@@ -26,6 +26,7 @@ import eu.thesimplecloud.api.CloudAPI
 import eu.thesimplecloud.api.directorypaths.DirectoryPaths
 import eu.thesimplecloud.api.service.ICloudService
 import eu.thesimplecloud.api.service.ServiceType
+import eu.thesimplecloud.api.service.version.type.ServiceAPIType
 import eu.thesimplecloud.api.template.ITemplate
 import eu.thesimplecloud.base.wrapper.startup.Wrapper
 import eu.thesimplecloud.clientserverapi.client.NettyClient
@@ -96,8 +97,11 @@ class ServiceDirectory(private val cloudService: ICloudService) {
                 FileCopier.copyFileOutOfJar(destServerIconFile, "/files/server-icon.png")
         }
 
-        val cloudPluginFile = File(this.serviceTmpDirectory, "/plugins/SimpleCloud-Plugin.jar")
-        FileCopier.copyFileOutOfJar(cloudPluginFile, "/SimpleCloud-Plugin.jar")
+        if(cloudService.getServiceVersion().serviceAPIType != ServiceAPIType.MINESTOM) {
+
+            val cloudPluginFile = File(this.serviceTmpDirectory, "/plugins/SimpleCloud-Plugin.jar")
+            FileCopier.copyFileOutOfJar(cloudPluginFile, "/SimpleCloud-Plugin.jar")
+        }
 
         generateServiceFile()
     }

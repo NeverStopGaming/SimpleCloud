@@ -39,6 +39,11 @@ enum class ServiceAPIType(
     SPIGOT(MinecraftEdition.JAVA, ServiceVersionType.SERVER),
 
     /**
+     * Represents a jar with the spigot api
+     */
+    MINESTOM(MinecraftEdition.JAVA, ServiceVersionType.SERVER),
+
+    /**
      * Represents a jar with the bungeecord api
      */
     BUNGEECORD(MinecraftEdition.JAVA, ServiceVersionType.PROXY),
