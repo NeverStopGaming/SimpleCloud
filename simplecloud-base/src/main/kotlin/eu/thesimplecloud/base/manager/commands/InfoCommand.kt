@@ -102,6 +102,8 @@ class InfoCommand : ICommandHandler {
             .map { it.replace("name:","§7Name§8:§3") }
             .map { it.replace("serviceAPIType:","§7serverAPIType§8:§3") }
             .map { it.replace("downloadURL:","§7DownloadUrl§8:§3") }
+            .map { it.replace("javaCommand","§7JavaCommand§8:§3") }
+            .map { it.replace("isPaperClip","§7PaperClip§8:§3") }
 
 
         commandSender.sendMessage("§7Service§8: §3" + service.getName() + message.joinToString("\n"))
