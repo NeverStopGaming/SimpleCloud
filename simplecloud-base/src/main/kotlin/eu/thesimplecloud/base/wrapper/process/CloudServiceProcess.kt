@@ -166,7 +166,7 @@ class CloudServiceProcess(private val cloudService: ICloudService) : ICloudServi
         val jvmArguments = Wrapper.instance.jvmArgumentsConfig.jvmArguments.filter {
             it.groups.contains("all") || it.groups.contains(this.cloudService.getGroupName()) || it.groups.contains(this.cloudService.getServiceType().name)
         }
-
+        
         val commandName = cloudService.getServiceGroup().getJavaCommandName()
         var commandNameExist = JavaVersion.paths.versions.keys.contains(commandName)
         if (commandName == "java") commandNameExist = true
