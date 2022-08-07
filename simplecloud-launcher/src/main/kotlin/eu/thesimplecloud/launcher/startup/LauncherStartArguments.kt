@@ -38,7 +38,6 @@ class LauncherStartArguments : CliktCommand() {
 
 
     override fun run() {
-        WrapperRamWriter(wrapperRam).write()
         Launcher(this).start()
     }
 }
