@@ -92,7 +92,7 @@ class ServiceVersionSetup : ISetup {
 
     @SetupFinished
     fun setupFinished() {
-        val serviceVersion = ServiceVersion(name, serviceAPIType, downloadURL, javaCommand, isPaperclip)
+        val serviceVersion = ServiceVersion(name, serviceAPIType, downloadURL, isPaperclip)
         LocalServiceVersionHandler().saveServiceVersion(serviceVersion)
         val serviceVersionHandler = CloudAPI.instance.getServiceVersionHandler() as ManagerServiceVersionHandler
         serviceVersionHandler.reloadServiceVersions()
