@@ -20,20 +20,38 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package eu.thesimplecloud.module.rest.auth
+package eu.thesimplecloud.base.manager.startup
 
-import io.javalin.core.security.RouteRole
+import eu.thesimplecloud.api.directorypaths.DirectoryPaths
+import eu.thesimplecloud.jsonlib.JsonLib
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
+import kotlin.io.path.name
+import kotlin.io.path.pathString
 
-enum class Roles : RouteRole {
+class ProfileFile {
 
-    ANYONE, USER
+    private val file = File("profile.sc")
 
-}
+    fun create() {
+        val pathStream = Files.walk(Paths.get(""))
+        val jsonLib = JsonLib.empty()
+        pathStream
+            .filter(Files::isRegularFile)
+            .filter {
+                it.name.endsWith(".json")
+                        && !it.name.contains("database")
+                        && !it.pathString.contains(DirectoryPaths.paths.languagesPath)
+            }
+            .forEach {
+                val pathName = it.pathString.replace(".json", "")
+                val file = File(it.toUri())
+                jsonLib.append(pathName, JsonLib.fromJsonFile(file)!!.jsonElement)
+            }
 
-fun createRolesMapping(): HashMap<String, RouteRole> {
-    val rolesMapping = HashMap<String, RouteRole>()
-    Roles.values().forEach {
-        rolesMapping[it.toString()] = it
+        pathStream.close()
+        jsonLib.saveAsFile(file)
     }
-    return rolesMapping
+
 }
