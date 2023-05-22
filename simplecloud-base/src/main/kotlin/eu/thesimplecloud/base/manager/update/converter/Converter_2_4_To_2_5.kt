@@ -20,20 +20,25 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package eu.thesimplecloud.module.rest.auth
+package eu.thesimplecloud.base.manager.update.converter
 
-import io.javalin.core.security.Role
+import eu.thesimplecloud.api.directorypaths.DirectoryPaths
+import java.io.File
 
-enum class Roles : Role {
+/**
+ * Date: 18.06.22
+ * Time: 16:44
+ * @author Frederick Baier
+ *
+ */
+class Converter_2_4_To_2_5 : IVersionConverter {
 
-    ANYONE, USER
-
-}
-
-fun createRolesMapping(): HashMap<String, Role> {
-    val rolesMapping = HashMap<String, Role>()
-    Roles.values().forEach {
-        rolesMapping[it.toString()] = it
+    override fun getTargetMinorVersion(): Int {
+        return 5
     }
-    return rolesMapping
+
+    override fun convert() {
+        File(DirectoryPaths.paths.storagePath, "updateable-modules.json").delete()
+    }
+
 }

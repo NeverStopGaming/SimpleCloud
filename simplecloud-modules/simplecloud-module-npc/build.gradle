@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (C) 2020-2022 The SimpleCloud authors
+ * Copyright (C) 2020 The SimpleCloud authors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  * documentation files (the "Software"), to deal in the Software without restriction, including without limitation
@@ -20,20 +20,29 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package eu.thesimplecloud.module.rest.auth
-
-import io.javalin.core.security.Role
-
-enum class Roles : Role {
-
-    ANYONE, USER
-
+configurations {
+    jar.archiveName = 'SimpleCloud-NPC.jar'
 }
 
-fun createRolesMapping(): HashMap<String, Role> {
-    val rolesMapping = HashMap<String, Role>()
-    Roles.values().forEach {
-        rolesMapping[it.toString()] = it
+dependencies {
+    compileOnly project(":simplecloud-base")
+    compileOnly project(":simplecloud-api")
+    compileOnly project(":simplecloud-plugin")
+    compileOnly project(":simplecloud-launcher")
+
+    compileOnly 'org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT'
+
+    compile 'com.github.juliarn.NPC-Lib:npc-lib-bukkit:3.0.0-beta4'
+    compile 'com.github.cryptomorin:XSeries:9.2.0'
+    compile 'com.squareup.okhttp3:okhttp:4.10.0'
+}
+
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it).matching {
+                exclude("plugin.yml")
+            }
+        }
     }
-    return rolesMapping
 }
