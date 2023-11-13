@@ -71,8 +71,8 @@
   <li>Download the cloud on SpigotMC</li>
   <li>Unzip the folder and execute the start file</li>
   <li>Follow the setup instructions</li>
-  <li>Connect a wrapper to your manager. It is recommended to use the InternalWrapperModule for this. You can find it below.</li>
-  <li>Create your first group by typing create into the console</li>
+  <li>Start the manager first</li>
+  <li>Create your first group by Following the setup instructions for the Proxy and Lobby</li>
   <li>For more information type help</li>
   <li>Have fun :D</li>
 </ol>
